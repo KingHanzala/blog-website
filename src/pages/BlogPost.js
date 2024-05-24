@@ -7,14 +7,18 @@ const BlogPost = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchPost = async () => {
+      setIsLoading(true);
       try {
-        const response = await axios.get(`http://localhost:5001/api/posts/${id}`);
+        const response = await axios.get(`https://blog-backend-pfwc.onrender.com/api/posts/${id}`);
         setPost(response.data);
       } catch (error) {
         console.error('Error fetching post:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchPost();
@@ -27,13 +31,18 @@ const BlogPost = () => {
     }
 }, []);
 
-  if (!post) return <div>Loading...</div>;
+  if (!post) return(
+  <div class="blogpost">
+    <div className="loading">
+      <div className="spinner"></div>
+    </div>
+  </div>);
 
   const handleDelete = async () => {
     const token = localStorage.getItem('token');
 
     try {
-      await axios.delete(`http://localhost:5001/api/posts/${id}`, {
+      await axios.delete(`https://blog-backend-pfwc.onrender.com/api/posts/${id}`, {
         headers: {
           Authorization: `${token}`
         }
@@ -47,6 +56,11 @@ const BlogPost = () => {
 
   return (
     <div class="blogpost">
+      {isLoading && (
+        <div className="loading">
+          <div className="spinner"></div>
+        </div>
+      )}
       <div class="blogpost-title">{post.title}</div>
       <div class="blogpost-image">
       <img src={post.image} alt={post.title} />

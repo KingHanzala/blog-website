@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 
-const Navbar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+const Navbar = ({ isAuthenticated, logout }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsAuthenticated(!!token);
-  }, []);
-
   const handleSignout = () => {
-    localStorage.removeItem('token');
-    setIsAuthenticated(false);
+    logout();
     navigate('/login');
   };
 

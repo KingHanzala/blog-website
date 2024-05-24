@@ -3,69 +3,78 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Signup.css'
 
-const Signup = () => {
+const Signup = ({ login }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [adminKey, setAdminKey] = useState('');
-  const history = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:5001/api/signup', { email, password, adminKey });
-      localStorage.setItem('token', response.data.token);
-      history('/admin');
+      const response = await axios.post('https://blog-backend-pfwc.onrender.com/api/signup', { email, password, adminKey });
+      login(response.data.token);
+      navigate('/admin');
     } catch (error) {
       console.error('Error signing up:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   async function returnToLogin() {
     window.location.href = '/login'
-}
+  }
 
   return (
     <div className="signup">
-    <div className="form-group return-to-login">
-      <button onClick={returnToLogin}>Login Instead</button>
-    </div>
-    <form onSubmit={handleSubmit}>
-      <div className='form-group'>
-      <label>
-        Email
-      </label>
-      <input 
-        type="email" 
-        placeholder="Email" 
-        value={email} 
-        onChange={(e) => setEmail(e.target.value)} 
-      />
+      <div className="form-group return-to-login">
+        <button onClick={returnToLogin}>Login Instead</button>
       </div>
-      <div className='form-group'>
-      <label>
-        Password
-      </label>
-      <input 
-        type="password" 
-        placeholder="Password" 
-        value={password} 
-        onChange={(e) => setPassword(e.target.value)} 
-      />
-      </div>
-      <div className='form-group'>
-      <label>
-        Admin Key
-      </label>
-      <input 
-        type="text" 
-        placeholder="AdminKey" 
-        value={adminKey} 
-        onChange={(e) => setAdminKey(e.target.value)} 
-      />
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div className='form-group'>
+          <label>
+            Email
+          </label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className='form-group'>
+          <label>
+            Password
+          </label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className='form-group'>
+          <label>
+            Admin Key
+          </label>
+          <input
+            type="text"
+            placeholder="AdminKey"
+            value={adminKey}
+            onChange={(e) => setAdminKey(e.target.value)}
+          />
+        </div>
 
-      <button type="submit">Signup</button>
-    </form>
+        <button type="submit">Signup</button>
+      </form>
+      {isLoading && (
+        <div className="loading">
+          <div className="spinner"></div>
+        </div>
+      )}
     </div>
   );
 };
