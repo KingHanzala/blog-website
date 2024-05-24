@@ -1,0 +1,107 @@
+/* BlogPost.css */
+
+.blogpost {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blogpost:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.blogpost-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.blogpost-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.blogpost-image img:hover {
+  transform: scale(1.05);
+}
+
+.blogpost-content {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+  text-align: center;
+}
+
+.blogpost-links {
+  margin-top: 1.5rem;
+}
+
+.blogpost-links ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.blogpost-links li {
+  display: inline;
+  margin: 0 0.5rem;
+}
+
+.blogpost-links a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+.blogpost-links a:hover {
+  color: #0056b3;
+  border-bottom: 2px solid #0056b3;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .blogpost {
+    padding: 1rem;
+  }
+
+  .blogpost-title {
+    font-size: 1.5rem;
+  }
+
+  .blogpost-content {
+    font-size: 1rem;
+  }
+
+  .blogpost-links a {
+    font-size: 0.9rem;
+  }
+}
