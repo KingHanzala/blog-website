@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/BlogPost.css'
+import getBackendURL from '../config.js';
+
+const backendURL = getBackendURL();
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -13,7 +16,7 @@ const BlogPost = () => {
     const fetchPost = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`https://blog-backend-pfwc.onrender.com/api/posts/${id}`);
+        const response = await axios.get(`${backendURL}/api/posts/${id}`);
         setPost(response.data);
       } catch (error) {
         console.error('Error fetching post:', error);
@@ -42,7 +45,7 @@ const BlogPost = () => {
     const token = localStorage.getItem('token');
 
     try {
-      await axios.delete(`https://blog-backend-pfwc.onrender.com/api/posts/${id}`, {
+      await axios.delete(`${backendURL}/api/posts/${id}`, {
         headers: {
           Authorization: `${token}`
         }

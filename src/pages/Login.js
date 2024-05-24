@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
+import getBackendURL from '../config.js';
+
+const backendURL = getBackendURL();
 
 const Login = ({login}) => {
   const [email, setEmail] = useState('');
@@ -13,7 +16,7 @@ const Login = ({login}) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post('https://blog-backend-pfwc.onrender.com/api/login', { email, password });
+      const response = await axios.post(`${backendURL}/api/login`, { email, password });
       login(response.data.token);
       navigate('/admin');
     } catch (error) {

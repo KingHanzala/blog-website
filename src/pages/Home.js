@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './../styles/Home.css';
+import getBackendURL from '../config.js';
+
+const backendURL = getBackendURL();
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -11,7 +14,7 @@ const Home = () => {
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get('https://blog-backend-pfwc.onrender.com/api/posts');
+        const response = await axios.get(`${backendURL}/api/posts`);
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);

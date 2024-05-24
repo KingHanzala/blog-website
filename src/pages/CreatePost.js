@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/CreatePost.css';
 import { useNavigate } from 'react-router-dom';
+import getBackendURL from '../config.js';
+
+const backendURL = getBackendURL();
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
@@ -16,7 +19,7 @@ const CreatePost = () => {
     const token = localStorage.getItem('token');
     setIsLoading(true);
     try {
-      const response = await axios.post('https://blog-backend-pfwc.onrender.com/api/posts',
+      const response = await axios.post(`${backendURL}/api/posts`,
         { title, content, image, links: links.split(',') },
         {
           headers: {
