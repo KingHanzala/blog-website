@@ -1,10 +1,7 @@
 This is a basic frontend code for my blog project. It is an open-source project which anyone can use.
 
-Follow me on my Social Media accounts:
-
+Owner: Hanzala
 Github: https://github.com/KingHanzala
-Leetcode: https://leetcode.com/u/kingertugrul/
-Twitter: https://twitter.com/kinghanzala_
 
 # Getting Started with Create React App
 
