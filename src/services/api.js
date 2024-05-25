@@ -1,7 +1,10 @@
 import axios from 'axios';
+import getBackendURL from '../config.js';
+
+const backendURL = getBackendURL();
 
 const API = axios.create({
-  baseURL: 'https://blog-backend-pfwc.onrender.com/api',
+  baseURL: `${backendURL}/api`,
 });
 
 API.interceptors.request.use((config) => {
