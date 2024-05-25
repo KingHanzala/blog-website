@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
+  background-color: #f0f0f3;
   margin: 0;
   padding: 0;
   color: #333;
@@ -21,9 +21,10 @@ a:hover {
   max-width: 800px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
+  background-color: #ffffff;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .blog-post-title {
@@ -39,22 +40,36 @@ a:hover {
   margin: 20px 0;
   padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  border-radius: 10px;
+  background-color: #fafafa;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .post-link:hover {
-  background-color: #f9f9f9;
+  background-color: #f0f0f3;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
 }
 
 .post-link h2 {
   font-size: 24px;
-  color: #1e90ff;
+  color: #333;
   margin: 0;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .post-link h2:hover {
-  color: #0056b3;
+  color: #1e90ff;
+  transform: scale(1.05);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 3;
+  }
 }

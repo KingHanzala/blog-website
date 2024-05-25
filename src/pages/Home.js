@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import PreviewPost from './PreviewPost';
 import './../styles/Home.css';
 import getBackendURL from '../config.js';
 
@@ -35,11 +35,7 @@ const Home = () => {
         </div>
       )}
       {posts.map(post => (
-        <div className="post-link" key={post._id}>
-          <Link to={`/post/${post._id}`}>
-            <h2>{post.title}</h2>
-          </Link>
-        </div>
+        <PreviewPost key={post._id} post={post} />
       ))}
     </div>
   );

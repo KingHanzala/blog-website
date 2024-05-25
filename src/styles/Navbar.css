@@ -1,46 +1,57 @@
 /* Navbar.css */
 nav {
-    background-color: #013c16;
-    padding: 1rem;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li {
-    margin: 0;
-  }
-  
-  nav ul li a,
-  nav ul li button {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  nav ul li a:hover,
-  nav ul li button:hover {
-    background-color: #000000;
-    border-radius: 4px;
-  }
-  
-  nav ul li button {
-    border: 0px solid white;
-    border-radius: 4px;
-    display: flex;
-  }
-  
-  nav ul li button:hover {
-    background-color: #881515;
-  }
-  
+  background-color: #084c53;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0;
+}
+
+nav ul li a,
+nav ul li button {
+  color: #ffbd59;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+nav ul li a:hover,
+nav ul li button:hover {
+  background-color: #000000;
+  border-radius: 4px;
+}
+
+nav ul li button {
+  border: 0px solid white;
+  border-radius: 4px;
+  display: flex;
+}
+
+nav ul li button:hover {
+  background-color: #840c0c;
+}
