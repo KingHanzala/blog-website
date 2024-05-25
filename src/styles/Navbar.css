@@ -55,3 +55,45 @@ nav ul li button {
 nav ul li button:hover {
   background-color: #840c0c;
 }
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffbd59;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .navbar-right {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-links li a,
+  .nav-links li button {
+    width: 100%;
+    padding: 10px 0;
+  }
+}

@@ -7,7 +7,9 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CreatePost from './pages/CreatePost';
 import Navbar from './components/Navbar';
+import NotifyUsers from './components/NotifyUsers'
 import PrivateRoute from './components/PrivateRoute';
+import SubscribeForm from './components/SubscribeForm';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -38,6 +40,7 @@ function App() {
         <Route path="/post/:id" element={<BlogPost />} />
         <Route path="/login" element={<Login login={login}/>} />
         <Route path="/signup" element={<Signup login={login}/>} />
+        <Route path="/subscribe" element={<SubscribeForm/>} />
         <Route
           path="/admin"
           element={<PrivateRoute element={AdminDashboard} />}
@@ -45,6 +48,10 @@ function App() {
         <Route
           path="/create-post"
           element={<PrivateRoute element={CreatePost} />}
+        />
+        <Route
+          path="/notify-users"
+          element={<PrivateRoute element={NotifyUsers} />}
         />
       </Routes>
     </Router>
