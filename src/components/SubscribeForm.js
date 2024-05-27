@@ -20,7 +20,7 @@ const SubscriptionForm = () => {
             const response = await axios.post(`${backendURL}/api/sendOtp`, { email });
             if (response.data.success) {
                 setOtpSent(true);
-                setMessage('OTP has been sent to your email.');
+                setMessage('OTP sent. Check spam if not in inbox.');
             }
         } catch (error) {
             if (error.response.status === 400) {

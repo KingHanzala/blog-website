@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #ffffff;
+  background: linear-gradient(90deg, #0f2230 0%, #3366f2 100%);
   margin: 0;
   padding: 0;
   color: #333;
@@ -24,7 +24,7 @@ a:hover {
   margin-bottom: 20px;
   border-bottom: 2px solid #ddd;
   padding-bottom: 10px;
-  background: linear-gradient(135deg, #0f2230 0%, #3366f2 100%);
+  background: linear-gradient(135deg, #337dbe 0%, #07277e 100%);
   animation: gradientAnimation 3s infinite alternate;
   position: relative;
   z-index: 1;
@@ -74,7 +74,7 @@ a:hover {
 
 .post-link p {
   font-size: 18px;
-  color: #555;
+  color: #f0e5e5;
   margin: 10px 0 0;
   animation: fadeIn 1.5s ease-in-out;
 }
