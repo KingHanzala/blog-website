@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import NotifyUsers from './components/NotifyUsers'
 import PrivateRoute from './components/PrivateRoute';
 import SubscribeForm from './components/SubscribeForm';
+import Footer from "./components/Footer";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -54,6 +55,7 @@ function App() {
           element={<PrivateRoute element={NotifyUsers} />}
         />
       </Routes>
+      <Footer/>
     </Router>
   );
 }

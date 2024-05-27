@@ -46,6 +46,7 @@ const Signup = ({ login }) => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div className='form-group'>
@@ -57,6 +58,7 @@ const Signup = ({ login }) => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <div className='form-group'>
@@ -68,6 +70,7 @@ const Signup = ({ login }) => {
             placeholder="AdminKey"
             value={adminKey}
             onChange={(e) => setAdminKey(e.target.value)}
+            required
           />
         </div>
 

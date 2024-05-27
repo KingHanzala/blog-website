@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './../styles/PreviewPost.css';
+import shareicon from '../share-icon.png';
 
 const PreviewPost = ({ post }) => {
   const handleShare = () => {
@@ -18,7 +19,9 @@ const PreviewPost = ({ post }) => {
         </div>
         <div className="preview-post-title">{post.title}</div>
       </Link>
-      <button className="share-button" onClick={handleShare}>Share</button>
+      <button className="share-button" onClick={handleShare}>
+        <img src={shareicon} alt="Share" style={{ background: "transparent" }} />
+      </button>
     </div>
   );
 };
