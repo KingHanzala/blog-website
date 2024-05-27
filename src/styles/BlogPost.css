@@ -1,29 +1,32 @@
-/* BlogPost.css */
 
+
+/* Blog Post Styles */
 .blogpost {
   max-width: 800px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  margin: 50px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #0f2230 0%, #3366f2 100%);
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .blogpost:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+  }
 
 .blogpost-title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 36px;
+  margin-bottom: 20px;
   text-align: center;
-  color: #333;
+  color: #fffdfd;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
 }
 
 .blogpost-image img {
@@ -37,21 +40,21 @@
 }
 
 .blogpost-content {
-  margin-top: 1rem;
+  margin-top: 20px;
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #555;
+  color: #fff0f0;
   text-align: center;
 }
 
 .blogpost-links {
   margin-top: 1.5rem;
+  text-align: center;
 }
 
 .blogpost-links ul {
   list-style-type: none;
   padding: 0;
-  text-align: center;
 }
 
 .blogpost-links li {
@@ -61,31 +64,57 @@
 
 .blogpost-links a {
   text-decoration: none;
-  color: #007bff;
+  color: #eef0f2;
   font-weight: bold;
   transition: color 0.3s, border-bottom 0.3s;
   border-bottom: 2px solid transparent;
 }
 
 .blogpost-links a:hover {
-  color: #0056b3;
-  border-bottom: 2px solid #0056b3;
+  color: #34bc44;
+  border-bottom: 2px solid #1e90ff;
 }
 
 button {
   padding: 0.5rem 1rem;
-  margin-top: 1rem;
+  margin-top: 20px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: #11bdb2;
   color: white;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
 button:hover {
   background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s;
+}
+
+button:active::before {
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.3s;
 }
 
 .loading {
@@ -112,11 +141,11 @@ button:hover {
 
 @media (max-width: 768px) {
   .blogpost {
-    padding: 1rem;
+    padding: 10px;
   }
 
   .blogpost-title {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
 
   .blogpost-content {
@@ -125,5 +154,17 @@ button:hover {
 
   .blogpost-links a {
     font-size: 0.9rem;
+  }
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

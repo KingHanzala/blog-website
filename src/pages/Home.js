@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <div className="blog-post-list">
-      <div className="blog-post-title">Posts</div>
+      <div>Posts</div>
       {isLoading && (
         <div className="loading">
           <div className="spinner"></div>

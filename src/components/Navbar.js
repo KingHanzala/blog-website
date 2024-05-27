@@ -1,40 +1,38 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
+
 import logo from'../../src/logo.png';
 
 const Navbar = ({ isAuthenticated, logout }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const handleSignout = () => {
-    logout();
-    navigate('/login');
+  const handleMenuClick = () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    if (menuToggle) {
+      menuToggle.checked = false;
+    }
   };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <nav className="navbar">
+      <div className="navbar-container">
       <div className="navbar-left">
-        <img src={logo} alt="Logo" />
+        <a href="/">
+        <img src={logo} href="/" alt="Logo" />
+        </a>
       </div>
-      <div className="navbar-right">
-        <div className="hamburger" onClick={toggleMenu}>
-          &#9776;
-        </div>
-        <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-          <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
-          <li><Link to="/subscribe" onClick={toggleMenu}>Subscribe</Link></li>
-          {isAuthenticated && <li><Link to="/admin" onClick={toggleMenu}>Admin Dashboard</Link></li>}
+        <input type="checkbox" id="menu-toggle" className="menu-toggle"/>
+        <label htmlFor="menu-toggle" className="menu-icon">&#9776;</label>
+        <ul className="nav-links">
+          <li><Link to="/" onClick={handleMenuClick}>Home</Link></li>
+          <li><Link to="/subscribe" onClick={handleMenuClick}>Subscribe</Link></li>
           {isAuthenticated ? (
-            <li>
-              <button onClick={() => { handleSignout(); toggleMenu(); }}>Signout</button>
-            </li>
+            <>
+              <li><Link to="/admin" onClick={handleMenuClick}>Dashboard</Link></li>
+              <li><button className="link-button" onClick={() => {logout(); handleMenuClick();}}>Logout</button></li>
+            </>
           ) : (
-            <li><Link to="/login" onClick={toggleMenu}>Login</Link></li>
+            <>
+              <li><Link to="/login" onClick={handleMenuClick}>Login</Link></li>
+            </>
           )}
         </ul>
       </div>

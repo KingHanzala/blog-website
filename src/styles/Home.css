@@ -1,10 +1,11 @@
 /* Global Styles */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f0f0f3;
+  background-color: #ffffff;
   margin: 0;
   padding: 0;
   color: #333;
+  line-height: 1.6;
 }
 
 a {
@@ -16,27 +17,32 @@ a:hover {
   color: #1e90ff;
 }
 
-/* Blog Post List Styles */
 .blog-post-list {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.blog-post-title {
   font-size: 36px;
   text-align: center;
   color: #333;
   margin-bottom: 20px;
   border-bottom: 2px solid #ddd;
   padding-bottom: 10px;
+  background: linear-gradient(135deg, #0f2230 0%, #3366f2 100%);
+  animation: gradientAnimation 3s infinite alternate;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Add specific styles for the "Posts" text */
+.blog-post-list > div:first-child {
+  font-size: 48px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .post-link {
+  display: block;
   margin: 20px 0;
   padding: 20px;
   border: 1px solid #ddd;
@@ -44,6 +50,7 @@ a:hover {
   background-color: #fafafa;
   transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease-in-out;
 }
 
 .post-link:hover {
@@ -57,6 +64,7 @@ a:hover {
   color: #333;
   margin: 0;
   transition: color 0.3s, transform 0.3s;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
 .post-link h2:hover {
@@ -64,12 +72,91 @@ a:hover {
   transform: scale(1.05);
 }
 
+.post-link p {
+  font-size: 18px;
+  color: #555;
+  margin: 10px 0 0;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.post-link p:hover {
+  color: #1e90ff;
+}
+
 /* Keyframes for Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    opacity: 3;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.post-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.post-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75px;
+  width: 50px;
+  height: 100%;
+  background: rgba(30, 144, 255, 0.1);
+  transform: skewX(-20deg);
+  transition: left 0.5s;
+  z-index: -1;
+}
+
+.post-link:hover::before {
+  left: 100%;
+  transition: left 0.5s;
+}
+
+@media (max-width: 768px) {
+  .blog-post-list {
+    padding: 10px;
+  }
+
+  .post-link {
+    padding: 15px;
+  }
+
+  .post-link h2 {
+    font-size: 20px;
   }
 }
