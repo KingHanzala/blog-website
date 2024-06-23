@@ -28,7 +28,9 @@ const Home = () => {
 
   return (
     <div className="blog-post-list">
-      <div>Posts</div>
+      <div>
+        {posts.length > 0 ? "Posts" : "Server downtime. Maintenance ongoing."}
+      </div>
       {isLoading && (
         <div className="loading">
           <div className="spinner"></div>
