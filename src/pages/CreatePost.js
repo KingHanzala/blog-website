@@ -8,7 +8,7 @@ const backendURL = getBackendURL();
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
   const [links, setLinks] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -19,8 +19,8 @@ const CreatePost = () => {
     const token = localStorage.getItem('token');
     setIsLoading(true);
     try {
-      const response = await axios.post(`${backendURL}/api/posts`,
-        { title, content, image, links: links.split(',') },
+      const response = await axios.post(`${backendURL}/api/post`,
+        { title, description, image, links: links.split(',') },
         {
           headers: {
             Authorization: `${token}`
@@ -56,9 +56,9 @@ const CreatePost = () => {
         </div>
         <div className="form-item">
           <textarea
-            placeholder="Content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div className="form-item">

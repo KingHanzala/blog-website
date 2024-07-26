@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <div className="blog-post-list">
       <div>
-        {posts.length > 0 ? "Posts" : "Server downtime. Maintenance ongoing."}
+        Posts
       </div>
       {isLoading && (
         <div className="loading">
@@ -37,7 +37,7 @@ const Home = () => {
         </div>
       )}
       {posts.map(post => (
-        <PreviewPost key={post._id} post={post} />
+        <PreviewPost key={post.id} post={post} />
       ))}
     </div>
   );

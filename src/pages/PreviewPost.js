@@ -5,7 +5,7 @@ import shareicon from '../share-icon.png';
 
 const PreviewPost = ({ post }) => {
   const handleShare = () => {
-    const url = `${window.location.origin}/post/${post._id}`;
+    const url = `${window.location.origin}/post/${post.id}`;
     navigator.clipboard.writeText(url).then(() => {
       alert('Post URL copied to clipboard!');
     });
@@ -13,7 +13,7 @@ const PreviewPost = ({ post }) => {
 
   return (
     <div className="preview-post">
-      <Link to={`/post/${post._id}`} className="preview-post-link">
+      <Link to={`/post/${post.id}`} className="preview-post-link">
         <div className="preview-post-image">
           <img src={post.image} alt={post.title} />
         </div>

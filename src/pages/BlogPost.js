@@ -16,7 +16,7 @@ const BlogPost = () => {
     const fetchPost = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`${backendURL}/api/posts/${id}`);
+        const response = await axios.get(`${backendURL}/api/post/${id}`);
         setPost(response.data);
       } catch (error) {
         console.error('Error fetching post:', error);
@@ -45,7 +45,7 @@ const BlogPost = () => {
     const token = localStorage.getItem('token');
 
     try {
-      await axios.delete(`${backendURL}/api/posts/${id}`, {
+      await axios.delete(`${backendURL}/api/post/${id}`, {
         headers: {
           Authorization: `${token}`
         }
@@ -69,7 +69,7 @@ const BlogPost = () => {
       <img src={post.image} alt={post.title} />
       </div>
       <div class="blogpost-content">
-      <p>{post.content}</p>
+      <p>{post.description}</p>
       </div>
       <div class="blogpost-links">
       <ul>
