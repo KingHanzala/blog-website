@@ -35,7 +35,7 @@ function App() {
     <Router>
       <div id="root" className="flex flex-col min-h-screen">
         <Navbar isAuthenticated={isAuthenticated} logout={logout}/>
-        <main className="main-content">
+        <main className="main-content dark:bg-gray-900 bg-white">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/post/:id" element={<BlogPost />} />

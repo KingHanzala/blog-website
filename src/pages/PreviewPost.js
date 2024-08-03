@@ -14,7 +14,7 @@ export const BlogCard = ({post}) => {
   return (
     <section class="bg-white dark:bg-gray-900">
     <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <div class="flex justify-between items-center mb-5 text-gray-500">
+        <div class="flex justify-between items-center mb-5 text-gray-500 dark:text-white">
             <span class="">
             </span>
             {createdDate && <span class="text-sm">{createdDate}</span>}

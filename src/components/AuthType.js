@@ -57,18 +57,18 @@ const AuthType = ({ authType, login }) => {
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div className="text-3xl font-extrabold mb-6">
+        <div className="text-3xl font-extrabold mb-6 text-black dark:text-white">
           {isLogin ? 'Login' : 'Signup'}
         </div>
         {isLogin ? (
-          <div className="text-slate-400 mb-4">
+          <div className="text-slate-400 mb-4 text-black dark:text-white">
             Want to become an admin?
             <Link to="/signup" className="pl-2 underline">
               Signup
             </Link>
           </div>
         ) : (
-          <div className="text-slate-400 mb-4">
+          <div className="text-slate-400 mb-4 text-black dark:text-white">
             Already an admin?
             <Link to="/login" className="pl-2 underline">
               Login
