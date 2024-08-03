@@ -3,18 +3,16 @@ import React, { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import BlogPost from './pages/BlogPost';
 import AdminDashboard from './pages/AdminDashboard';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import { Auth } from './components/Auth';
 import CreatePost from './pages/CreatePost';
 import Navbar from './components/Navbar';
-import NotifyUsers from './components/NotifyUsers'
+import NotifyUsers from './components/NotifyUsers';
 import PrivateRoute from './components/PrivateRoute';
 import SubscribeForm from './components/SubscribeForm';
 import Footer from "./components/Footer";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   useEffect(() => {
     // Check if the user is already authenticated
     const token = localStorage.getItem('token');
@@ -35,27 +33,31 @@ function App() {
 
   return (
     <Router>
-      <Navbar isAuthenticated={isAuthenticated} logout={logout}/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/post/:id" element={<BlogPost />} />
-        <Route path="/login" element={<Login login={login}/>} />
-        <Route path="/signup" element={<Signup login={login}/>} />
-        <Route path="/subscribe" element={<SubscribeForm/>} />
-        <Route
-          path="/admin"
-          element={<PrivateRoute element={AdminDashboard} />}
-        />
-        <Route
-          path="/create-post"
-          element={<PrivateRoute element={CreatePost} />}
-        />
-        <Route
-          path="/notify-users"
-          element={<PrivateRoute element={NotifyUsers} />}
-        />
-      </Routes>
-      <Footer/>
+      <div id="root" className="flex flex-col min-h-screen">
+        <Navbar isAuthenticated={isAuthenticated} logout={logout}/>
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/post/:id" element={<BlogPost />} />
+            <Route path="/login" element={<Auth authType="Login" login={login}/>} />
+            <Route path="/signup" element={<Auth authType="Signup" login={login}/>} />
+            <Route path="/subscribe" element={<SubscribeForm/>} />
+            <Route
+              path="/admin"
+              element={<PrivateRoute element={AdminDashboard} />}
+            />
+            <Route
+              path="/create-post"
+              element={<PrivateRoute element={CreatePost} />}
+            />
+            <Route
+              path="/notify-users"
+              element={<PrivateRoute element={NotifyUsers} />}
+            />
+          </Routes>
+        </main>
+        <Footer/>
+      </div>
     </Router>
   );
 }
