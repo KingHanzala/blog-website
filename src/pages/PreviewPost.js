@@ -12,13 +12,13 @@ export const BlogCard = ({post}) => {
             </span>
             <span class="text-sm">{post.createdAt.slice(0,10)}</span>
         </div>
-        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">{post.title}</a></h2>
+        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{post.title}</h2>
         <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{post.description.slice(0,100) + "..."}</p>
         <div class="flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 
             </div>
-            <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
+            <a href="/" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
               <Link to={`/post/${post.id}`}>Read More</Link>
                 <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </a>
@@ -52,7 +52,6 @@ export const BlogCardSkeleton = () => {
           </span>
           <span className="bg-gray-300 h-4 w-24 rounded-md"></span>
         </div>
-        <h2 className="mb-2 h-8 bg-gray-300 rounded-md"></h2>
         <p className="mb-5 h-4 bg-gray-300 rounded-md"></p>
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -81,7 +80,6 @@ export const BlogCardSkeleton = () => {
           </span>
           <span className="bg-gray-300 h-4 w-24 rounded-md"></span>
         </div>
-        <h2 className="mb-2 h-8 bg-gray-300 rounded-md"></h2>
         <p className="mb-5 h-4 bg-gray-300 rounded-md"></p>
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -112,7 +110,6 @@ export const BlogCardSkeleton = () => {
           </span>
           <span className="bg-gray-300 h-4 w-24 rounded-md"></span>
         </div>
-        <h2 className="mb-2 h-8 bg-gray-300 rounded-md"></h2>
         <p className="mb-5 h-4 bg-gray-300 rounded-md"></p>
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -159,7 +156,7 @@ export const BlogCardError = () => {
         </p>
         <div className="flex justify-between items-center">
           <a
-            href="#"
+            href="/"
             className="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
           >
             Try Again
