@@ -4,16 +4,23 @@ import './../styles/PreviewPost.css';
 
 
 export const BlogCard = ({post}) => {
+  let createdDate, description;
+  if(post && post.createdAt) {
+    createdDate = post.createdAt.slice(0,10);
+  }
+  if(post && post.description) {
+    description = post.description.slice(0,100);
+  }
   return (
     <section class="bg-white dark:bg-gray-900">
     <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div class="flex justify-between items-center mb-5 text-gray-500">
             <span class="">
             </span>
-            <span class="text-sm">{post.createdAt.slice(0,10)}</span>
+            {createdDate && <span class="text-sm">{createdDate}</span>}
         </div>
         <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{post.title}</h2>
-        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{post.description.slice(0,100) + "..."}</p>
+        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{description + "..."}</p>
         <div class="flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 
