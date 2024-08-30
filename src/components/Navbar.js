@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FaHome, FaUser, FaSignInAlt } from 'react-icons/fa';
 import '../styles/Navbar.css';
 
 import logo from '../../src/logo.png';
@@ -24,14 +25,19 @@ const Navbar = ({ isAuthenticated, logout }) => {
     setIsDarkMode(!isDarkMode);
   };
 
+  useEffect(() => {
+    // Add a transition effect to the body for smooth dark mode toggle
+    document.body.style.transition = 'background-color 0.3s ease';
+  }, []);
+
   return (
-    <header>
-      <nav className="border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-900">
+    <header className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 shadow-md transition-colors duration-300">
+      <nav className="px-4 lg:px-6 py-2.5">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <a href="/" className="flex items-center">
             <img src={logo} className="mr-3 h-6 sm:h-9" alt="Logo" />
           </a>
-          <div className="flex items-center lg:order-2">
+          <div className="flex items-center lg:order-2 space-x-2">
             
             {isAuthenticated && (
               <button
@@ -72,7 +78,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
             <button
               onClick={toggleDarkMode}
               type="button"
-              className="text-gray-500 dark:text-gray-400 hover:bg-gray-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 ml-2"
+              className="text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 transition-colors duration-300"
             >
               <svg
                 id="theme-toggle-dark-icon"
@@ -100,20 +106,20 @@ const Navbar = ({ isAuthenticated, logout }) => {
               <li>
                 <Link
                   to="/"
-                  className={`block py-2 pr-4 pl-3 ${location.pathname === '/' ? 'text-white bg-primary-700' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'}`}
+                  className={`flex items-center py-2 pr-4 pl-3 ${location.pathname === '/' ? 'text-white bg-primary-700' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'} transition-colors duration-300`}
                   onClick={closeMenu}
                 >
-                  Home
+                  <FaHome className="mr-2" /> Home
                 </Link>
               </li>
               {isAuthenticated && (
                 <li>
                   <Link
                     to="/admin"
-                    className={`block py-2 pr-4 pl-3 ${location.pathname === '/admin' ? 'text-white bg-primary-700' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'}`}
+                    className={`flex items-center py-2 pr-4 pl-3 ${location.pathname === '/admin' ? 'text-white bg-primary-700' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'} transition-colors duration-300`}
                     onClick={closeMenu}
                   >
-                    Dashboard
+                    <FaUser className="mr-2" /> Dashboard
                   </Link>
                 </li>
               )}
@@ -121,10 +127,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
                 <li>
                   <Link
                     to="/login"
-                    className={`block py-2 pr-4 pl-3 ${location.pathname === '/login' ? 'text-white bg-primary-700' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'}`}
+                    className={`flex items-center py-2 pr-4 pl-3 ${location.pathname === '/login' ? 'text-white bg-primary-700' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'} transition-colors duration-300`}
                     onClick={closeMenu}
                   >
-                    Login
+                    <FaSignInAlt className="mr-2" /> Login
                   </Link>
                 </li>
               )}

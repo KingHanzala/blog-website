@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BlogCard, BlogCardSkeleton } from './PreviewPost';
 import getBackendURL from '../config.js';
+import { motion } from 'framer-motion';
 
 const backendURL = getBackendURL();
 
@@ -29,22 +30,49 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-      <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-          <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Posts</h2>
-          <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Latest updates on top ongoing airdrops</p>
-      </div> 
-      <div class="grid gap-8 lg:grid-cols-2">
-      {isLoading && (
-        <BlogCardSkeleton/>
-      )}
-      {posts.map(post => (
-        <BlogCard key={post.id} post={post} />
-      ))}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="py-12 px-4 mx-auto max-w-screen-xl lg:py-20 lg:px-6">
+        <motion.div
+          className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8"
+          initial={{ y: -50 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h1 className="mb-4 text-4xl lg:text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+            Latest Airdrops
+          </h1>
+          <p className="font-light text-gray-600 sm:text-xl dark:text-gray-400">
+            Stay updated with the most recent and exciting airdrops in the crypto world
+          </p>
+        </motion.div> 
+        <motion.div
+          className="grid gap-8 lg:grid-cols-2"
+          initial={{ y: 50 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          {isLoading ? (
+            Array(4).fill().map((_, index) => (
+              <BlogCardSkeleton key={index} />
+            ))
+          ) : (
+            posts.map(post => (
+              <motion.div
+                key={post.id}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                <BlogCard post={post} />
+              </motion.div>
+            ))
+          )}
+        </motion.div>
       </div>
-    </div>
-    </div>
+    </motion.div>
   );
 };
 
